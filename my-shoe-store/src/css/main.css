@@ -1,0 +1,30 @@
+/* Стили для контейнера, чтобы центрировать содержимое */
+.row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .col {
+    flex: 0 100%; /* Заставляет колонку занимать 100% ширины контейнера */
+    max-width: 100%; /* Ограничивает максимальную ширину, чтобы избежать переполнения */
+  }
+  
+  /* Центрирование содержимого секций */
+  .top-sales, .catalog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Центрирование прелоадера */
+  .preloader {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .preloader span {
+    display: inline-block;
+    /* Добавьте стили для вашего прелоадера здесь */
+  }
+  
