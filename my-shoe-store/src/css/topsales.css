@@ -1,0 +1,49 @@
+.top-sales {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Ограничиваем максимальную ширину для крупных экранов */
+  }
+  
+  .top-sales h2 {
+    font-size: 1.8rem; /* Увеличиваем для лучшей видимости */
+    margin-bottom: 20px;
+  }
+  
+  .top-sales p {
+    font-size: 1rem; /* Устанавливаем комфортный размер шрифта для чтения */
+    line-height: 1.6; /* Улучшаем читаемость за счёт увеличения межстрочного интервала */
+    margin-bottom: 15px; /* Добавляем немного места после абзацев */
+  }
+  
+  .top-sales .h4 {
+    font-size: 1.4rem; /* Делаем подзаголовки чуть меньше основного заголовка */
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .top-sales ol {
+    padding-left: 20px; /* Добавляем отступ для элементов списка, чтобы было удобнее читать */
+  }
+  
+  .top-sales ol li {
+    margin-bottom: 10px; /* Добавляем пространство между пунктами списка */
+  }
+  
+  @media (max-width: 768px) {
+    .top-sales {
+      padding: 15px;
+    }
+  
+    .top-sales h2 {
+      font-size: 1.5rem;
+    }
+  
+    .top-sales .h4 {
+      font-size: 1.2rem;
+    }
+  
+    .top-sales p, .top-sales ol li {
+      font-size: 0.9rem; /* Уменьшаем шрифт для мобильных устройств */
+    }
+  }
+  

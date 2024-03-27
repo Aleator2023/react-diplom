@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import headerLogo from '../img/header-logo.png';
 import headerControlsSprite from '../img/header-controls-sprite.png';
+import bannerImage from '../img/banner.jpg';
 import '../css/header.css'; 
 
 function Header() {
@@ -36,6 +37,10 @@ function Header() {
             </div>
           </nav>
         </div>
+        <div className="banner">
+            <img src={bannerImage} className="img-fluid" alt="К весне готовы!" />
+            <h2 className="banner-header">К весне готовы!</h2>
+          </div>
       </div>
     </header>
   );

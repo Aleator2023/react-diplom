@@ -1,7 +1,16 @@
 import React from 'react';
+import Header from './Header';
+import TopSales from './TopSales';
+import Footer from './Footer';
 
 function AboutPage () {
-  return <div>О нас</div>;
-}
+    return (
+        <div>
+          <Header />
+          <TopSales />
+          <Footer />
+        </div>
+      );
+    }
 
 export default AboutPage;

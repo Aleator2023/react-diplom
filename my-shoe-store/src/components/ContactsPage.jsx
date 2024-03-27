@@ -1,7 +1,16 @@
 import React from 'react';
+import Header from './Header';
+import Contacts from './Contacts';
+import Footer from './Footer';
 
-function ContactsPage () {
-  return <div>Контакты</div>;
-}
+function AboutPage () {
+    return (
+        <div>
+          <Header />
+          <Contacts />
+          <Footer />
+        </div>
+      );
+    }
 
-export default ContactsPage;
+export default AboutPage;
