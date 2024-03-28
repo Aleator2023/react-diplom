@@ -1,5 +1,6 @@
 import React from 'react';
-
+import TopSalesComponent from './TopSalesComponent'; 
+import CatalogComponent from './CatalogComponent';
 import '../css/main.css'; 
 
 function Main() {
@@ -7,25 +8,12 @@ function Main() {
     <main className="container">
       <div className="row">
         <div className="col">
-          
           <section className="top-sales">
-            <h2 className="text-center">Хиты продаж!</h2>
-            <div className="preloader">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </section>
+            <TopSalesComponent />
+            </section>
           <section className="catalog">
-            <h2 className="text-center">Каталог</h2>
-            <div className="preloader">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </section>
+            <CatalogComponent />
+            </section>
         </div>
       </div>
     </main>

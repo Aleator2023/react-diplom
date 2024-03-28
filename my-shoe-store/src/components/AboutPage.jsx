@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './Header';
-import TopSales from './TopSales';
+import About from './About';
 import Footer from './Footer';
 
 function AboutPage () {
     return (
         <div>
           <Header />
-          <TopSales />
+          <About />
           <Footer />
         </div>
       );

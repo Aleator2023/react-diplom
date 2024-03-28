@@ -7,14 +7,14 @@
   .footer .row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: 0px;
+    margin-left: 0px;
   }
   
   
   .footer .col {
-    flex: 0 0 33.3333%;
-    max-width: 33.3333%;
+    flex: 0 0 30%;
+    max-width: 30%;
     padding-right: 15px;
     padding-left: 15px;
     box-sizing: border-box;

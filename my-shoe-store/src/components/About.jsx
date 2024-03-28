@@ -1,9 +1,9 @@
 import React from 'react';
-import '../css/topsales.css'; 
+import '../css/about.css'; 
 
-function TopSales() {
+function About() {
   return (
-    <section className="top-sales">
+    <section className="about">
       <h2 className="text-center">О магазине</h2>
       <p>
         В Интернете можно встретить немало магазинов, предлагающих аксессуары. Но именно к нам хочется
@@ -38,4 +38,4 @@ function TopSales() {
   );
 }
 
-export default TopSales;
+export default About;

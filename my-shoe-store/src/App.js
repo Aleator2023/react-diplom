@@ -8,21 +8,22 @@ import {
   Link
 } from 'react-router-dom';
 
-import HomePage from './components/HomePage'; // Компонент для главной страницы
+import HomePage from './components/HomePage'; 
 import CatalogPage from './components/CatalogPage';
 import AboutPage from './components/AboutPage';
 import ContactsPage from './components/ContactsPage';
+import NotfoundPage from './components/NotFoundPage';
 
 function App() {
   return (
     <Router>
       <div>
-        {/* Маршрутизация и рендеринг компонентов страниц */}
         <Routes>
-          <Route path="/" element={<HomePage />} /> {/* Главная страница */}
+          <Route path="/" element={<HomePage />} /> 
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="*" element={<NotfoundPage />} />
         </Routes>
       </div>
     </Router>
@@ -30,4 +31,3 @@ function App() {
 }
 
 export default App;
-
