@@ -65,7 +65,7 @@ export const useCategories = () => {
 };
 
 // 
-export const useItems = (categoryId = null, offset = 0) => {
+export const useItems = (categoryId = null, searchQuery = '', offset = 0) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -75,20 +75,17 @@ export const useItems = (categoryId = null, offset = 0) => {
     const fetchItems = async () => {
       try {
         setLoading(true);
-        // Строим URL в зависимости от выбранной категории и смещения
-        let url = 'http://localhost:7070/api/items';
+        
+        let url = `${apiBaseUrl}/items`;
         const params = new URLSearchParams();
         if (categoryId) params.append('categoryId', categoryId);
+        if (searchQuery) params.append('q', searchQuery); 
         if (offset) params.append('offset', offset);
         if (params.toString()) url += `?${params}`;
 
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
+        const data = await fetchApi(url);
         setItems(offset === 0 ? data : [...items, ...data]);
-        setHasMore(data.length === 6); // предполагаем, что если пришло меньше 6, то элементов больше нет
+        setHasMore(data.length === 6); 
       } catch (error) {
         setError(error);
       } finally {
@@ -97,7 +94,7 @@ export const useItems = (categoryId = null, offset = 0) => {
     };
 
     fetchItems();
-  }, [categoryId, offset]); // Перезапускаем эффект при изменении categoryId или offset
+  }, [categoryId, searchQuery, offset]); // Перезапускаем эффект при изменении categoryId, searchQuery или offset
 
   return { items, loading, error, hasMore };
 };

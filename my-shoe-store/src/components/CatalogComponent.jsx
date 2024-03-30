@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCategories, useItems } from './apiHooks';
+import SearchComponent from './SearchComponent';
 
 const CatalogComponent = () => {
   const { categories, loading: loadingCategories, error: errorCategories } = useCategories();
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(''); // Добавляем состояние для поискового запроса
   const [offset, setOffset] = useState(0);
-  const { items, loading: loadingItems, error: errorItems, hasMore } = useItems(selectedCategoryId, offset);
+  const { items, loading: loadingItems, error: errorItems, hasMore } = useItems(selectedCategoryId, searchQuery, offset);
+
+  useEffect(() => {
+    setOffset(0); // Сбросить offset при смене категории или поискового запроса
+  }, [selectedCategoryId, searchQuery]); // Добавляем searchQuery в массив зависимостей
+
+  const handleSearch = (searchTerm) => {
+    setSearchQuery(searchTerm); // Устанавливаем поисковый запрос
+  };
 
   const handleCategoryChange = (categoryId) => {
     setSelectedCategoryId(categoryId);
-    setOffset(0); // Сбросить offset при смене категории
   };
 
   const handleLoadMore = () => {
@@ -19,6 +28,9 @@ const CatalogComponent = () => {
   return (
     <section className="catalog">
       <h2 className="text-center">Каталог</h2>
+
+      <SearchComponent onSearch={handleSearch} />
+
       {loadingCategories && <div className="preloader">Загрузка категорий...</div>}
       {errorCategories && <div>Error: {errorCategories.message}</div>}
       <div>
