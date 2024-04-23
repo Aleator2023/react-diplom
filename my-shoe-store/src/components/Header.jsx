@@ -10,31 +10,20 @@ function Header() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
-
-  
   const toggleSearch = () => {
     setSearchVisible(prev => !prev);
-  };
-
-  
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      navigate(`/catalog?search=${encodeURIComponent(searchTerm.trim())}`);
-      setSearchVisible(false); 
-    }
   };
 
   const handleSearch = (searchTerm) => {
     if (searchTerm.trim()) {
       navigate(`/catalog?search=${encodeURIComponent(searchTerm.trim())}`);
-      setSearchVisible(false); 
+      setSearchVisible(false);
     }
+  };
+  
+
+  const goToCart = () => {
+    navigate('/cart'); // Переход на страницу корзины
   };
 
   return (
@@ -59,17 +48,25 @@ function Header() {
             </li>
           </ul>
         </div>
+
         <div className="header-controls-pics">
-          <div className="header-controls-pic header-controls-search" onClick={toggleSearch} style={{backgroundImage: `url(${headerControlsSprite})`}}></div>
-          {/* Эта иконка корзины должна быть определена и иметь свой обработчик событий */}
-          <div className="header-controls-pic header-controls-cart" style={{backgroundImage: `url(${headerControlsSprite})`}}></div>
+          <div className="header-controls-pic header-controls-search" onClick={toggleSearch}>
+            {searchVisible && (
+              <div className="search-container" onClick={(e) => e.stopPropagation()}>
+                <SearchComponent onSearch={handleSearch} />
+                <div className="search-icon" onClick={() => {
+                  handleSearch(searchTerm);
+                  setSearchVisible(false);
+                }}></div>
+              </div>
+            )}
+          </div>
+          <div className="header-controls-pic header-controls-cart" onClick={goToCart}
+               style={{backgroundImage: `url(${headerControlsSprite})`, backgroundPosition: '0 0'}}> {/* Позиция иконки корзины */}
+          </div>
         </div>
       </nav>
-      {searchVisible && (
-        <div className="search-container">
-          <SearchComponent onSearch={handleSearch} />
-        </div>
-      )}
+      
       <div className="banner">
         <img src={bannerImage} className="img-fluid" alt="К весне готовы!" />
         <h2 className="banner-header">К весне готовы!</h2>

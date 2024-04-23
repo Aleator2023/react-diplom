@@ -21,7 +21,6 @@ const CatalogComponent = ({ searchQuery }) => {
 
   return (
     <section className="catalog">
-      <h2 className="text-center">Каталог</h2>
       {loadingCategories && <div className="preloader">Загрузка категорий...</div>}
       {errorCategories && <div>Error: {errorCategories.message}</div>}
       <div>

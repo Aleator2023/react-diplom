@@ -11,6 +11,7 @@ function Main() {
           <section className="top-sales">
             <TopSalesComponent />
             </section>
+          <h2 className="text-center">Каталог</h2>
           <section className="catalog">
             <CatalogComponent />
             </section>
