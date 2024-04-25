@@ -16,6 +16,7 @@ import NotfoundPage from './components/NotFoundPage';
 import ProductPage from './components/ProductPage';
 import CartPage from './components/CartPage';
 
+
 function App() {
   return (
     <Router>
@@ -28,7 +29,7 @@ function App() {
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="*" element={<NotfoundPage />} />
           <Route path="/cart" element={<CartPage />} />
-        </Routes>
+          </Routes>
       </div>
     </Router>
   );

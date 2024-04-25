@@ -43,7 +43,7 @@ const CheckoutForm = ({ items }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
       <h5>Телефон</h5>
       <input
         type="tel"

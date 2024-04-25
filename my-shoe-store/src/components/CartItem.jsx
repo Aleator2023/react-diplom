@@ -1,11 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../css/cartitem.css';
 
 const CartItem = ({ item, onRemove, onQuantityChange, index }) => {
   return (
     <tr className="cart-item">
       <td>{index + 1}</td>
-      <td><a href={`/products/${item.id}.html`}>{item.name}</a></td>
+      <td>
+      <Link to={`/catalog/${item.id}.html`} className="product-link">
+  {item.name}
+</Link>
+        </td>
       <td>{item.size} US</td>
       <td>
         <input
