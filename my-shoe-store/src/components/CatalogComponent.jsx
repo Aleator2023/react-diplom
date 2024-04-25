@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCategories, useItems } from './apiHooks';
 
 const CatalogComponent = ({ searchQuery }) => {
+  const navigate = useNavigate();
   const { categories, loading: loadingCategories, error: errorCategories } = useCategories();
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [offset, setOffset] = useState(0);
@@ -17,6 +19,10 @@ const CatalogComponent = ({ searchQuery }) => {
 
   const handleLoadMore = () => {
     setOffset(prevOffset => prevOffset + 6);
+  };
+
+  const handleOrderClick = (id) => {
+    navigate(`/catalog/${id}.html`); 
   };
 
   return (
@@ -43,7 +49,9 @@ const CatalogComponent = ({ searchQuery }) => {
             <div className="product-info">
               <h3 className="product-title">{item.title}</h3>
               <p className="product-price">{item.price} руб.</p>
-              <button className="order-button">Заказать</button>
+              <button className="order-button" onClick={() => handleOrderClick(item.id)}>
+                Заказать
+              </button>
             </div>
           </div>
         ))}
