@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import headerLogo from '../img/header-logo.png';
 import headerControlsSprite from '../img/header-controls-sprite.png'; 
@@ -13,6 +13,7 @@ function Header() {
   const toggleSearch = () => {
     setSearchVisible(prev => !prev);
   };
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   const handleSearch = (searchTerm) => {
     if (searchTerm.trim()) {
@@ -25,6 +26,11 @@ function Header() {
   const goToCart = () => {
     navigate('/cart'); // Переход на страницу корзины
   };
+
+  useEffect(() => {    
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartItemCount(cartItems.reduce((count, item) => count + item.quantity, 0));
+  }, []);
 
   return (
     <header className="header-container">
@@ -61,9 +67,15 @@ function Header() {
               </div>
             )}
           </div>
+
           <div className="header-controls-pic header-controls-cart" onClick={goToCart}
-               style={{backgroundImage: `url(${headerControlsSprite})`, backgroundPosition: '0 0'}}> {/* Позиция иконки корзины */}
-          </div>
+             style={{backgroundImage: `url(${headerControlsSprite})`, backgroundPosition: '0 0'}}>
+             {cartItemCount > 0 && (
+            <span className="header-controls-cart-full">{cartItemCount}</span>
+          )}
+        </div>
+        
+        
         </div>
       </nav>
       
